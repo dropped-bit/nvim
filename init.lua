@@ -187,6 +187,11 @@ vim.keymap.set("n", "<C-Down>", ":resize +2<CR>", { desc = "Resize down" })
 vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Resize left" })
 vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Resize right" })
 
+-- Navigate using CTRL and vim keys while in insert mode
+--TODO: Does not currently work:
+-- vim.api.nvim_set_keymap("i", "<C-h>", "<Left>", { desc = "test", noremap = true })
+-- vim.api.nvim_set_keymap("i", "<C-l>", "<Right>", {})
+
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })

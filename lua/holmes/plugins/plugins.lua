@@ -68,6 +68,8 @@ return {
 			require("which-key").register({
 				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
 				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+				["<leader>f"] = { name = "[F]ile Explorer", _ = "which_key_ignore" },
+				["<leader>j"] = { name = "[j] + [k] Delete Buffer", _ = "which_key_ignore" },
 				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
 				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
 				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
@@ -430,7 +432,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
+				python = { "isort", "black" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
@@ -579,16 +581,16 @@ return {
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
 			--  and try some other statusline plugin
-			local statusline = require("mini.statusline")
-			statusline.setup()
+			-- local statusline = require("mini.statusline")
+			-- statusline.setup()
 
 			-- You can configure sections in the statusline by overriding their
 			-- default behavior. For example, here we disable the section for
 			-- cursor information because line numbers are already enabled
 			---@diagnostic disable-next-line: duplicate-set-field
-			statusline.section_location = function()
-				return ""
-			end
+			-- statusline.section_location = function()
+			-- 	return ""
+			-- end
 
 			-- ... and there is more!
 			--  Check out: https://github.com/echasnovski/mini.nvim
