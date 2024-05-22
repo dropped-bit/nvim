@@ -9,7 +9,8 @@ return {
 			options = {
 				-- theme = "catppuccin-macchiato",
 				-- theme = "onedark",
-				theme = "dracula",
+				-- theme = "dracula",
+				-- theme = "kanagawa",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				disabled_filetypes = { "" },
