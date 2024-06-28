@@ -20,7 +20,7 @@ return {
 		workspaces = {
 			{
 				name = "personal",
-				path = "~/second_brain",
+				path = "$HOME/Projects/second_brain",
 			},
 			-- {
 			-- 	name = "work",

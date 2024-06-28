@@ -75,4 +75,5 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+--  remove space for the command line
 vim.opt.cmdheight = 0
