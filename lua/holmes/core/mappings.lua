@@ -4,6 +4,13 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- Enable Spell-Checking
+vim.keymap.set(
+	"n",
+	"<leader>dc",
+	":setlocal spell spelllang=en_us<CR>",
+	{ desc = "Spell [C]hecking", noremap = true, silent = true }
+)
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv", { desc = "Indent right", noremap = true, silent = true })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent left", noremap = true, silent = true })

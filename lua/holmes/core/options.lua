@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- NOTE: Set Language for Spelling
+-- vim.opt.spelllang = "en_us"
+
 -- NOTE: Get stabs to work better?
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

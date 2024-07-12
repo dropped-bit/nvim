@@ -11,19 +11,6 @@ return { -- LSP Configuration & Plugins
 		{ "j-hui/fidget.nvim", opts = {} },
 	},
 	config = function()
-		-- LSP provides Neovim with features like:
-		--  - Go to definition
-		--  - Find references
-		--  - Autocompletion
-		--  - Symbol Search
-		--  - and more!
-		--
-		-- Thus, Language Servers are external tools that must be installed separately from
-		-- Neovim. This is where `mason` and related plugins come into play.
-		--
-		-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-		-- and elegantly composed help section, `:help lsp-vs-treesitter`
-
 		--  This function gets run when an LSP attaches to a particular buffer.
 		--    That is to say, every time a new file is opened that is associated with
 		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) thisneovim folder structure
@@ -115,82 +102,70 @@ return { -- LSP Configuration & Plugins
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-		-- Enable the following language servers
-		--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-		--
-		--  Add any additional override configuration in the following tables. Available keys are:
-		--  - cmd (table): Override the default command used to start the server
-		--  - filetypes (table): Override the default list of associated filetypes for the server
-		--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-		--  - settings (table): Override the default settings passed when initializing the server.
-		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-		local servers =
-			{
-				pyright = {
-					settings = {
-						python = {
-							analysis = {
-								diagnosticMode = "workspace",
-							},
-						},
-					},
-				},
-				lua_ls = {
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							workspace = {
-								checkThirdParty = false,
-								-- Tells lua_ls where to find all the Lua files that you have loaded
-								-- for your neovim configuration.
-								library = {
-									"${3rd}/luv/library",
-									unpack(vim.api.nvim_get_runtime_file("", true)),
-								},
-								-- If lua_ls is really slow on your computer, you can try this instead:
-								-- library = { vim.env.VIMRUNTIME },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							-- diagnostics = { disable = { 'missing-fields' } },
-						},
-					},
-				},
-				rust_analyzer = {
-					filetypes = { "rust" },
-					root_dir = require("lspconfig/util").root_pattern("Cargo.toml"),
-					settings = {
-						["rust-analyzer"] = {
-							allFeatures = true,
+		local servers = {
+			pyright = {
+				settings = {
+					python = {
+						analysis = {
+							diagnosticMode = "workspace",
 						},
 					},
 				},
 			},
-			-- Ensure the servers and tools above are installed
-			--  To check the current status of installed tools and/or manually install
-			--  other tools, you can run
-			--    :Mason
-			--
-			--  You can press `g?` for help in this menu
-			require("mason").setup()
+			lua_ls = {
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						workspace = {
+							checkThirdParty = false,
+							-- Tells lua_ls where to find all the Lua files that you have loaded
+							-- for your neovim configuration.
+							library = {
+								"${3rd}/luv/library",
+								unpack(vim.api.nvim_get_runtime_file("", true)),
+							},
+							-- If lua_ls is really slow on your computer, you can try this instead:
+							-- library = { vim.env.VIMRUNTIME },
+						},
+						completion = {
+							callSnippet = "Replace",
+						},
+						-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+						-- diagnostics = { disable = { 'missing-fields' } },
+					},
+				},
+			},
+			rust_analyzer = {
+				filetypes = { "rust" },
+				root_dir = require("lspconfig/util").root_pattern("Cargo.toml"),
+				settings = {
+					["rust-analyzer"] = {
+						allFeatures = true,
+					},
+				},
+			},
+		}
 
-		-- You can add other tools here that you want Mason to install
-		-- for you, so that they are available from within Neovim.
+		require("mason").setup({})
+
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
-			"rust-analyzer",
-			"stylua", -- Used to format lua code
-			"html",
-			"cssls",
-			"pyright",
-			"isort",
-			"black",
-			"pylint",
-			"prettier",
+			"rust-analyzer", -- rust
+			"html", -- html
+			"cssls", -- css
+			"pyright", -- python
+			"marksman", -- markdown
+			"lua-language-server", -- lua
 		})
-		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+		require("mason-tool-installer").setup({
+			"prettier", -- prettier formatter
+			"stylua", -- lua formatter
+			"isort", -- python formatter
+			"black", -- python formatter
+			"pylint", -- python linter
+			"markdownlint-cli2", -- markdown formatter and linter
+		})
 
 		require("mason-lspconfig").setup({
 			handlers = {
@@ -205,4 +180,5 @@ return { -- LSP Configuration & Plugins
 			},
 		})
 	end,
+	-- { import = "plugins.langs" },
 }
