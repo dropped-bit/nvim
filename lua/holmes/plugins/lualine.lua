@@ -26,10 +26,10 @@ return {
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
 					},
-					{ "datetime", style = "%H:%M" },
-					"encoding",
+					-- { "datetime", style = "%H:%M" },
 					"fileformat",
 					"filetype",
+					"encoding",
 				},
 			},
 		})
