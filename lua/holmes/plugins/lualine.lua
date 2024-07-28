@@ -28,8 +28,9 @@ return {
 					},
 					-- { "datetime", style = "%H:%M" },
 					"fileformat",
-					"filetype",
-					"encoding",
+					{ "filetype", icon_only = true, align = "centre" },
+					-- "encoding",
+					"require'lsp-status'.status()",
 				},
 			},
 		})
