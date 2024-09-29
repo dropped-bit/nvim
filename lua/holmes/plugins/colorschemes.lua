@@ -22,7 +22,7 @@ return {
 				},
 			})
 
-			vim.cmd("colorscheme github_dark_dimmed")
+			-- vim.cmd("colorscheme github_dark_dimmed")
 		end,
 	},
 	{
@@ -33,7 +33,7 @@ return {
 			require("catppuccin").setup({
 				transparent_background = true,
 			})
-			-- vim.cmd.colorscheme("catppuccin-macchiato")
+			vim.cmd.colorscheme("catppuccin-frappe")
 		end,
 	},
 }
