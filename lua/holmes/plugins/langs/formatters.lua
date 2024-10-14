@@ -25,7 +25,7 @@ return {
 				rustfmt = {
 					inherit = false,
 					command = "rustfmt",
-					args = { "--force" },
+					-- args = { "--force" },
 				},
 			},
 		})
