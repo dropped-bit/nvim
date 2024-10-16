@@ -217,6 +217,9 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"lua-language-server", -- lua
+				"bash-language-server", --bash
+				"beautysh", -- bash formater
+				"shellcheck", -- bash linter
 				"rust-analyzer", -- rust
 				"marksman", -- markdown
 				"markdownlint-cli2", -- markdown formatter and linter
