@@ -14,6 +14,9 @@ return {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				rust = { "rustfmt" },
+				bash = { "beautysh" },
+				zsh = { "beautysh" },
+				sh = { "beautysh" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
