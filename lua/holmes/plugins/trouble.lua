@@ -11,14 +11,20 @@ return {
 		vim.keymap.set(
 			"n",
 			"<leader>td",
-			":TroubleToggle document_diagnostics<CR>",
+			":Trouble diagnostics toggle filter.buf=0<CR>",
 			{ noremap = true, silent = true, desc = "[T]rouble [D]ocument Diagnostics" }
 		)
 		vim.keymap.set(
 			"n",
 			"<leader>tw",
-			":TroubleToggle workspace_diagnostics<CR>",
+			":Trouble diagnostics toggle<CR>",
 			{ noremap = true, silent = true, desc = "[T]rouble [W]orkspace Diagnostics" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ts",
+			":Trouble symbols toggle focus=false<CR>",
+			{ noremap = true, silent = true, desc = "[T]rouble [W]orkspace Symbols" }
 		)
 	end,
 }
