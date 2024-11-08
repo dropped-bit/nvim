@@ -32,6 +32,9 @@ return {
 		config = function()
 			require("catppuccin").setup({
 				transparent_background = true,
+				styles = {
+					comments = { "altfont" },
+				},
 			})
 			vim.cmd.colorscheme("catppuccin-frappe")
 		end,

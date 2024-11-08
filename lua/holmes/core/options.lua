@@ -81,5 +81,8 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 --  remove space for the command line
 vim.opt.cmdheight = 0
 
--- disable netrw
--- vim.opt.netrw_menu = 0
+vim.diagnostic.config({
+	float = {
+		border = "rounded",
+	},
+})
